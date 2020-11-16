@@ -3,16 +3,11 @@ import MovieReviews from "../components/movieReviews"
 import React, {useState, useEffect } from "react";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
-import {getMovie} from '../api/tmdb-api'
+import useMovie from "../hooks/useMovie";
 
 const MoviePage = props => {
   const { id } = props.match.params;
-  const [movie, setMovie] = useState(null);
-  useEffect(() => {
-    getMovie(id).then(movie => {
-      setMovie(movie);
-    });
-  }, [id]);
+  const [movie] = useMovie(id)
   return (
     <>
     {movie ? (
