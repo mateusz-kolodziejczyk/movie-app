@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import MovieListPageTemplate from "../components/templateMovieListPage";
-import AddReviewButton from '../components/buttons/addReview'
+import RemoveFromWatchlistButton from "../components/buttons/removeFromWatchlist";
 import {MoviesContext} from '../contexts/moviesContext'
 
 const WatchlistPage = props => {
@@ -10,7 +10,7 @@ const WatchlistPage = props => {
     <MovieListPageTemplate
       movies={watchlist}
       title={"Watchlist"}
-      action={movie => <AddReviewButton movie={movie} />}
+      action={movie => <RemoveFromWatchlistButton movie={movie} />}
     />
   );
 };
