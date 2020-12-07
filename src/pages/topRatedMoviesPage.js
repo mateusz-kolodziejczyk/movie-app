@@ -2,14 +2,13 @@ import React, { useContext } from "react";
 import PageTemplate from '../components/templateMovieListPage'
 import AddToWatchlistButton from "../components/buttons/addToWatchlist"
 import {MoviesContext} from '../contexts/moviesContext'
-const LatestMoviesPage = () => {
+
+const TopRatedMoviesPage = () => {
   const context = useContext(MoviesContext);
-  const movies = context.upcoming.filter((m) => { 
-    return !(m.watchlist === true);
-  });
+  const movies = context.topRated;
   return (
       <PageTemplate
-        title='LatestMovies'
+        title='Popular Movies'
         movies={movies}
         action={(movie) => {
           return <AddToWatchlistButton movie={movie} />;
@@ -18,4 +17,4 @@ const LatestMoviesPage = () => {
   );
 };
 
-export default LatestMoviesPage;
+export default TopRatedMoviesPage;

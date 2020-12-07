@@ -5,8 +5,8 @@ export const getUpcomingMovies = () => {
     return apiRequestWithResults(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 };
 
-export const getLatestMovies = () => {
-    apiRequestWithResults(`https://api.themoviedb.org/3/movie/latest?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
+export const getTopRatedMovies = () => {
+    return apiRequestWithResults(`https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 }
 
 export const getMovie = id => {
@@ -30,6 +30,7 @@ export const getMovieReviews = id => {
 };
 
 // Function for any api request that sends out a json file with results, common in this app
+// It includes any query to get a list of movies
 const apiRequestWithResults = (apiRequest) => {
     return fetch(
         apiRequest
