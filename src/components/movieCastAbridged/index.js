@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getMovieCast } from "../../api/tmdb-api";
-import { excerpt } from "../../util";
+import "./movieCast.css"
 
 export default ({ movie }) => {
   const [cast, setCast] = useState([]);
   useEffect(() => {
-    getMovieCast(movie.id).then(reviews => {
+    getMovieCast(movie.id).then(cast => {
       setCast(cast);
     });
   }, []);
@@ -21,18 +21,17 @@ export default ({ movie }) => {
         </tr>
       </thead>
       <tbody>
-        {cast.map(actor => {
+        {cast.splice(0,10).map(actor => {
           return (
             <tr key={actor.id}>
-              <td>
+              <td id="actorImage">
                 <img
                   src={
                     actor.profile_path
                       ? `https://image.tmdb.org/t/p/h100/${actor.profile_path}`
                       : "./actor-picture-placeholder.png"
                   }
-                  className="movie"
-                  alt={movie.title}
+                  alt={actor.name}
                 />
               </td>
               <td>{actor.name}</td>
