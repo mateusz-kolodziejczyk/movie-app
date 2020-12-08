@@ -15,6 +15,12 @@ export const getMovie = id => {
     ).then(res => res.json());
 };
 
+export const getPerson = id => {
+    return fetch(
+        `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+    ).then(res => res.json())
+}
+
 export const getGenres = () => {
     return fetch(
         "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
