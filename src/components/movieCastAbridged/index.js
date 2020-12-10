@@ -41,9 +41,6 @@ export default ({ movie }) => {
                 <Link
                   to={{
                     pathname: `/person/${actor.id}`,
-                    state: {
-                      actorID: actor.id,
-                    }
                   }}
                 >
                   Actor Profile

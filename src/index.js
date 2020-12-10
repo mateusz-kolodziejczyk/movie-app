@@ -12,6 +12,7 @@ import SiteHeader from './components/siteHeader';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage';
+import PersonPage from './pages/personPage';
 import WatchlistPage from "./pages/watchlistPage";
 
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
                 <Route path="/movies/:id" component={MoviePage} />
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />
+                <Route path="/person/:id" component={PersonPage} />
                 <Route path="/" component={HomePage} />
                 <Redirect from="*" to="/" />
               </Switch>
