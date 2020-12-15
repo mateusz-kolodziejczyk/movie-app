@@ -35,6 +35,10 @@ const MoviePage = props => {
                 )}
             </div>
           </div>
+          <Route
+            path={`/movies/:id/reviews`}
+            render={props => <MovieReviews movie={movie} {...props} />}
+          />
           <div className="row">
             <div className="col-12 ">
               {!props.history.location.pathname.endsWith("/cast") ? (
@@ -54,10 +58,7 @@ const MoviePage = props => {
                 )}
             </div>
           </div>
-          <Route
-            path={`/movies/:id/reviews`}
-            render={props => <MovieReviews movie={movie} {...props} />}
-          />
+
           <Route
             path={`/movies/:id/cast`}
             render={props => <MovieCast movie={movie} {...props} />}

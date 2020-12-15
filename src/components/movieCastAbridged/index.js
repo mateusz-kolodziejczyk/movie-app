@@ -21,7 +21,7 @@ export default ({ movie }) => {
         </tr>
       </thead>
       <tbody>
-        {cast.splice(0,10).map(actor => {
+        {cast.splice(0, 10).map(actor => {
           return (
             <tr key={actor.id}>
               <td id="actorImage">
@@ -50,6 +50,21 @@ export default ({ movie }) => {
           );
         })}
       </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="1">More</td>
+          <td colspan="3">
+            <Link
+              className="btn btn-primary btn-block active"
+              to={{
+                pathname: `/movies/${movie.id}/full-cast`,
+              }}
+            >
+              Full Cast
+                  </Link>
+          </td>
+        </tr>
+      </tfoot>
     </table>
   );
 };
