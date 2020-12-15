@@ -37,17 +37,48 @@ const TemplatePersonPage = ({ person }) => {
         <div className="col-9">
           <h4>{person.name}</h4>
           <ul className="list-group list-group-horizontal">
-            <li key="ruh" className="list-group-item list-group-item-dark">
+            <li key="pkfh" className="list-group-item list-group-item-dark">
+              Known for
+            </li>
+            <li key="pkfd" className="list-group-item ">
+              {person.known_for_department}
+            </li>
+            <li key="pbh" className="list-group-item list-group-item-dark">
               Birthday
             </li>
-            <li key="rut" className="list-group-item ">
+            <li key="pbd" className="list-group-item ">
               {person.birthday}
             </li>
-            <li key="ruh" className="list-group-item list-group-item-dark">
+            <li key="pgh" className="list-group-item list-group-item-dark">
               Gender
             </li>
-            <li key="rut" className="list-group-item ">
+            <li key="pgd" className="list-group-item ">
               {gender}
+            </li>
+            <li key="ppbh" className="list-group-item list-group-item-dark">
+              Place of Birth
+            </li>
+            <li key="ppbd" className="list-group-item ">
+              {person.place_of_birth}
+            </li>
+            {person.deathday ? (
+              <>
+                <li key="pddh" className="list-group-item list-group-item-dark">
+                  Day of Death
+                </li>
+                <li key="pddh" className="list-group-item ">
+                  {person.deathday}
+                </li>
+              </>
+            ) : (<></>)
+            }
+          </ul>
+          <ul className="list-group list-group-horizontal">
+            <li key="ruh" className="list-group-item list-group-item-dark">
+              Biography
+            </li>
+            <li key="rut" className="list-group-item ">
+              {person.biography}
             </li>
           </ul>
         </div>
