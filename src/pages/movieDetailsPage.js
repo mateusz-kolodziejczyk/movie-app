@@ -1,17 +1,19 @@
 import { Link, Route, withRouter } from "react-router-dom"
 import MovieReviews from "../components/movieReviews"
-import MovieCast from "../components/movieCastAbridged"
-import React, { useState, useEffect } from "react";
+import MovieCast from "../components/movieCast"
+import React from "react";
 import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import useMovie from "../hooks/useMovie";
+import useCast from "../hooks/useCast";
 
 const MoviePage = props => {
   const { id } = props.match.params;
-  const [movie] = useMovie(id)
+  const [movie] = useMovie(id);
+  const [cast] = useCast(id);
   return (
     <>
-      {movie ? (
+      {movie && cast ? (
         <>
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
@@ -61,7 +63,7 @@ const MoviePage = props => {
 
           <Route
             path={`/movies/:id/cast`}
-            render={props => <MovieCast movie={movie} {...props} />}
+            render={props => <MovieCast cast={cast.splice(0,10)} movie_id={movie.id} {...props} />}
           />
         </>
       ) : (

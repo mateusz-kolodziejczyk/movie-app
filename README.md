@@ -1,14 +1,14 @@
 # Assignment 1 - ReactJS app.
 
-Name: ... your name ...
+Name: Mateusz Kolodziejczyk
 
 ## Features.
 
 ...... A bullet-point list of the ADDITIONAL user features you have implemented for the  Movies Fan app ......,
  
- + Feature 1 - .... a statement of its purpose/objective ..... 
- + Feature 2 - .......
- + Feature 3 = ......
+ + Watchlist Page - Adding movies to watchlist on the upcoming page adds them to this page.
+ + Movie page Cast List - The movie has a list of its cast members on its page, allowing users to see who acted in the movie.
+ + Full Cast List - The movie cast list is shorter, as casts can be extremely large. The full cast list is in a separate page.
  + etc
  + etc
 
@@ -18,10 +18,10 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ## API Data Model.
 
-..... List the additional TMDB endpoints used in your assignment, e.g.
 + https://api.themoviedb.org/3/movie/top_rated - get a list of the top rated movies.
 + https://api.themoviedb.org/3/movie/${id}/credits - get a list of credits(cast members) for a specific movie
-+ .......
++ https://api.themoviedb.org/3/person/${id} - get details on a specific person
++ 
 
 ## App Design.
 
@@ -45,10 +45,11 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ...... Insert a list of the additional routes supported by your Movies Fan app. If relevant, specify which of the routes require authentication, i.e. protected/private.
 
-+ /movies/favorites (protected) - displays the user's favorite movies selection.
-+ /reviews/:id (public) - displays the full text of a movie review.
-+ etc.
-+ etc.
++ /movie/:id/cast (public) - displays an abridged version of the cast list on a movie page
++ /reviews/:id/full-cast (public) - displays the full cast of a movie on a separate page
++ /movies/top-rated - displays a list of the top rated movies on tmdb
++ /person/:id - displays information about a particular person
++ /movies/watchlist - displays a list of all the movies added to the watchlist
 
 ### Data hyperlinking.
 
