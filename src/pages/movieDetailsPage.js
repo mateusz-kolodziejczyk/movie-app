@@ -63,7 +63,7 @@ const MoviePage = props => {
 
           <Route
             path={`/movies/:id/cast`}
-            render={props => <MovieCast cast={cast.splice(0,10)} movie_id={movie.id} {...props} />}
+            render={props => <MovieCast cast={cast.splice(0, 10)} movie_id={movie.id} {...props} />}
           />
         </>
       ) : (

@@ -1,6 +1,7 @@
 import { Link, Route, withRouter } from "react-router-dom"
 import React, { useState, useEffect } from "react";
 import PageTemplate from "../components/templatePersonPage";
+import PersonDetails from "../components/personDetails";
 import usePerson from "../hooks/usePerson";
 
 const PersonPage = props => {
@@ -11,6 +12,7 @@ const PersonPage = props => {
     {person ?  (
         <>
           <PageTemplate person={person}>
+            <PersonDetails person={person} />
           </PageTemplate>
        </>
     )

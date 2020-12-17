@@ -7,11 +7,13 @@ import MoviesHeader from "../src/components/headerMovieList";
 import MovieList from "../src/components/movieList";
 import MovieDetails from "../src/components/movieDetails";
 import MovieHeader from "../src/components/headerMovie";
-import MovieCast from "../src/components/movieCast"
+import MovieCast from "../src/components/movieCast";
+import PersonDetails from "../src/components/personDetails"
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
+import PersonHeader from "../src/components/personHeader";
 
 const sample = {
   adult: false,
@@ -177,7 +179,9 @@ storiesOf("Home Page/MovieList", module)
 storiesOf("Movie Details Page/MovieDetails", module).add("default", () => (
   <MovieDetails movie={sample} />
 ));
-
+storiesOf("Person Details Page/PersonDetails", module).add("default", () => (
+  <PersonDetails person={sample_actor} />
+));
 storiesOf("Movie Cast Page/MovieCast", module)
 .addDecorator(story => (
   <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -195,3 +199,8 @@ storiesOf("Movie Details Page/MovieHeader", module)
   ))
   .add("default", () => <MovieHeader movie={sample} />);
 
+  storiesOf("Person Details Page/PersonHeader", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => <PersonHeader person={sample_actor} />);
