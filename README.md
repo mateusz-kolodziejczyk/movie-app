@@ -93,5 +93,5 @@ Create your own .env file with your own TMDB API key in the root folder.
 [personDetailsMovieLink]: ./public/personDetailMovieLink.PNG
 [DMFResetMovieList]: ./public/discoverMovieFormResetMovieList.PNG
 [DMFSubmit]: ./public/discoverMovieFormSubmit.PNG
-[fullCastLink]: ./public/fullCastList.PNG
+[fullCastLink]: ./public/fullCastLink.PNG
 
