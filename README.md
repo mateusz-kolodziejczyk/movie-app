@@ -47,9 +47,9 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 + /movie/:id/cast (public) - displays an abridged version of the cast list on a movie page
 + /reviews/:id/full-cast (public) - displays the full cast of a movie on a separate page
-+ /movies/top-rated - displays a list of the top rated movies on tmdb
-+ /person/:id - displays information about a particular person
-+ /movies/watchlist - displays a list of all the movies added to the watchlist
++ /movies/top-rated(public) - displays a list of the top rated movies on tmdb
++ /person/:id(public) - displays information about a particular person
++ /movies/watchlist(public) - displays a list of all the movies added to the watchlist
 
 ### Data hyperlinking.
 

@@ -8,7 +8,8 @@ import MovieList from "../src/components/movieList";
 import MovieDetails from "../src/components/movieDetails";
 import MovieHeader from "../src/components/headerMovie";
 import MovieCast from "../src/components/movieCast";
-import PersonDetails from "../src/components/personDetails"
+import PersonDetails from "../src/components/personDetails";
+import DiscoverSearchForm from "../src/components/discoverSearchForm";
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
@@ -204,3 +205,11 @@ storiesOf("Movie Details Page/MovieHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <PersonHeader person={sample_actor} />);
+
+  storiesOf("Home Page/DiscoverSearchForm" , module)
+    .addDecorator(story => (
+      <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+    ))
+    .add("default", () => <DiscoverSearchForm/>);
+
+  
