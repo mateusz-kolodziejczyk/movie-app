@@ -10,6 +10,7 @@ const reducer = (state, action) => {
                 upcoming: [...state.upcoming],
                 topRated: [...state.topRated],
                 favorites: [...state.favorites, action.payload.movie],
+                initialMovies: [...state.initialMovies]
             };
         case "add-watchlist":
             return {
@@ -18,7 +19,8 @@ const reducer = (state, action) => {
                 ),
                 movies: [...state.movies],
                 topRated: [...state.topRated],
-                favorites: [...state.favorites]
+                favorites: [...state.favorites],
+                initialMovies: [...state.initialMovies]
             };
         case "remove-watchlist":
             return {
@@ -27,14 +29,48 @@ const reducer = (state, action) => {
                 ),
                 movies: [...state.movies],
                 topRated: [...state.topRated],
-                favorites: [...state.favorites]
+                favorites: [...state.favorites],
+
+                initialMovies: [...state.initialMovies]
             };
+
         case "load":
-            return { movies: action.payload.movies, upcoming: [...state.upcoming], topRated: [...state.topRated], favorites: [...state.favorites] };
+            return {
+                movies: action.payload.movies, 
+                upcoming: [...state.upcoming], 
+                topRated: [...state.topRated], 
+                favorites: [...state.favorites], 
+                initialMovies: [...state.initialMovies]
+            };
+        case "load-start":
+            return { 
+                movies: action.payload.movies, 
+                upcoming: [...state.upcoming], 
+                topRated: [...state.topRated], 
+                favorites: [...state.favorites], 
+                initialMovies: action.payload.movies
+            };
+        case "load-initial":
+            return { 
+                movies: state.initialMovies, 
+                upcoming: [...state.upcoming], 
+                topRated: [...state.topRated], 
+                favorites: [...state.favorites], 
+                initialMovies: [...state.initialMovies] };
         case "load-upcoming":
-            return { upcoming: action.payload.movies, movies: [...state.movies], topRated: [...state.topRated], favorites: [...state.favorites] };
+            return { 
+                upcoming: action.payload.movies, 
+                movies: [...state.movies], 
+                topRated: [...state.topRated], 
+                favorites: [...state.favorites], 
+                initialMovies: [...state.initialMovies] };
         case "load-topRated":
-            return { topRated: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming], favorites: [...state.favorites] };
+            return { 
+                topRated: action.payload.movies, 
+                movies: [...state.movies], 
+                upcoming: [...state.upcoming], 
+                favorites: [...state.favorites], 
+                initialMovies: [...state.initialMovies] };
         case "add-review":
             return {
                 movies: [...state.movies],
@@ -45,6 +81,7 @@ const reducer = (state, action) => {
                         ? { ...m, review: action.payload.review }
                         : m
                 ),
+                initialMovies: [...state.initialMovies]
             };
         default:
             return state;
@@ -52,7 +89,7 @@ const reducer = (state, action) => {
 };
 
 const MoviesContextProvider = (props) => {
-    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], favorites: [] });
+    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], favorites: [], initialMovies: [] });
     const addToFavorites = (movieId) => {
         if (state.movies.find((m) => m.id === movieId)) {
             const index = state.movies.map((m) => m.id).indexOf(movieId);
@@ -81,7 +118,7 @@ const MoviesContextProvider = (props) => {
     // Use it to reload movies after changing them
     const loadMovies = () => {
         getMovies().then((movies) => {
-            dispatch({ type: "load", payload: { movies } });
+            dispatch({ type: "load-initial", payload: { movies } });
         });
     }
 
@@ -95,7 +132,7 @@ const MoviesContextProvider = (props) => {
     // Add to movies
     useEffect(() => {
         getMovies().then((movies) => {
-            dispatch({ type: "load", payload: { movies } });
+            dispatch({ type: "load-start", payload: { movies } });
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);

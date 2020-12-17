@@ -26,6 +26,7 @@ const MovieListPage = (props) => {
     }
     else {
       context.loadMovies();
+      console.log("loaded movie");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);

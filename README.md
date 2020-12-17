@@ -50,6 +50,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + /movies/top-rated(public) - displays a list of the top rated movies on tmdb
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
++ /search?query - shows a list of movies fitting the criteria in the query string.
 
 ### Data hyperlinking.
 
