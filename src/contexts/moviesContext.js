@@ -1,8 +1,7 @@
 import React, { useEffect, createContext, useReducer } from "react";
-import { getMovies, getUpcomingMovies, getTopRatedMovies} from "../api/tmdb-api";
+import { getMovies, getUpcomingMovies, getTopRatedMovies } from "../api/tmdb-api";
 
 export const MoviesContext = createContext(null);
-
 const reducer = (state, action) => {
     switch (action.type) {
         case "add-favorite":
@@ -12,6 +11,7 @@ const reducer = (state, action) => {
                 ),
                 upcoming: [...state.upcoming],
                 topRated: [...state.topRated],
+                favorites: [...state.favorites, action.payload.movie]
             };
         case "add-watchlist":
             return {
@@ -20,6 +20,7 @@ const reducer = (state, action) => {
                 ),
                 movies: [...state.movies],
                 topRated: [...state.topRated],
+                favorites: [...state.favorites]
             };
         case "remove-watchlist":
             return {
@@ -28,13 +29,14 @@ const reducer = (state, action) => {
                 ),
                 movies: [...state.movies],
                 topRated: [...state.topRated],
+                favorites: [...state.favorites]
             };
         case "load":
-            return { movies: action.payload.movies, upcoming: [...state.upcoming], topRated: [...state.topRated], };
+            return { movies: action.payload.movies, upcoming: [...state.upcoming], topRated: [...state.topRated],favorites: [...state.favorites] };
         case "load-upcoming":
-            return { upcoming: action.payload.movies, movies: [...state.movies] , topRated: [...state.topRated],};
+            return { upcoming: action.payload.movies, movies: [...state.movies], topRated: [...state.topRated],favorites: [...state.favorites] };
         case "load-topRated":
-            return {topRated: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming],};
+            return { topRated: action.payload.movies, movies: [...state.movies], upcoming: [...state.upcoming],favorites: [...state.favorites] };
         case "add-review":
             return {
                 movies: state.movies.map((m) =>
@@ -44,6 +46,7 @@ const reducer = (state, action) => {
                 ),
                 upcoming: [...state.upcoming],
                 topRated: [...state.topRated],
+                favorites: [...state.favorites]
             };
         default:
             return state;
@@ -51,8 +54,7 @@ const reducer = (state, action) => {
 };
 
 const MoviesContextProvider = (props) => {
-    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: []});
-
+    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], favorites: []});
     const addToFavorites = (movieId) => {
         const index = state.movies.map((m) => m.id).indexOf(movieId);
         dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
@@ -87,7 +89,7 @@ const MoviesContextProvider = (props) => {
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    
+
     // Add to topRated
     useEffect(() => {
         getTopRatedMovies().then((movies) => {
@@ -102,6 +104,7 @@ const MoviesContextProvider = (props) => {
                 movies: state.movies,
                 upcoming: state.upcoming,
                 topRated: state.topRated,
+                favorites: state.favorites,
                 addToFavorites: addToFavorites,
                 addToWatchlist: addToWatchlist,
                 addReview: addReview,

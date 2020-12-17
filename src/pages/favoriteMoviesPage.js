@@ -5,7 +5,7 @@ import {MoviesContext} from '../contexts/moviesContext'
 
 const FavoriteMoviesPage = props => {
   const context = useContext(MoviesContext);
-  const favorites = context.movies.filter( m => m.favorite )
+  const favorites = context.favorites;
   return (
     <MovieListPageTemplate
       movies={favorites}

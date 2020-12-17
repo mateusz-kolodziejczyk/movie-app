@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import useForm from "react-hook-form";
 import { withRouter } from "react-router-dom";
+import { GenresContext } from "../../contexts/genresContext"
 
 const DiscoverSearchForm = ({ history }) => {
     const { register, handleSubmit, errors, reset } = useForm({
@@ -9,20 +10,20 @@ const DiscoverSearchForm = ({ history }) => {
             sort_order: "desc",
             include_adult: false,
             year: "",
-            with_genres: "",
+            with_genres: null,
         }
     });
-    const select_values ={
-        sort_by: "popularity",
-        sort_order: "desc"
-    }
+
+    const context = useContext(GenresContext);
 
     const onSubmit = data => {
         const sortString = data.sort_by + "." + data.sort_order;
-        const queryString = 
+        const queryString = "?sort_by=" + sortString + "&include_adult=" + data.include_adult
+            + (data.year !== "" ? "&year=" + data.year : "")
+            + (data.with_genres !== "0" ? "&with_genres=" + data.with_genres : "");
         console.log(data);
-        console.log(sortString);
-        //history.push("/movies/favorites");
+        console.log(queryString);
+        history.push("/" + queryString);
     };
 
     return (
@@ -33,54 +34,83 @@ const DiscoverSearchForm = ({ history }) => {
                 <label class="form-check-label" for="exampleCheck1">Include Adult Movies</label>
             </div>
             {errors.include_adult && <p className=" text-white">{errors.author.message} </p>}
-            <div class="form-group">
-                <label>Sort By
-                <select value={select_values.sort_by} class="form-control" name="sort_by" ref={register}>
-                        <option value="popularity">Popularity</option>
-                        <option value="release_date">Release Date</option>
-                        <option value="vote_average">Vote Average</option>
-                    </select>
-                </label>
+            <div class="form-row">
+                <div class="form-group col-sm-2">
+                    <label>Sort By
+                <select class="form-control" name="sort_by" ref={register}>
+                            <option value="popularity">Popularity</option>
+                            <option value="release_date">Release Date</option>
+                            <option value="vote_average">Vote Average</option>
+                        </select>
+                    </label>
+                    {errors.sort_by && (
+                        <p className="text-white">{errors.content.message} </p>
+                    )}
+                </div>
+                <div class="form-group col-sm-10">
+                    <label>Sort Order
+                <select class="form-control" id="sort-order-dropdown" name="sort_order" ref={register}>
+                            <option value="desc">Descending</option>
+                            <option value="asc">Ascending</option>
+                        </select>
+                    </label>
+
+                    {errors.sort_by && (
+                        <p className="text-white">{errors.content.message} </p>
+                    )}
+                </div>
             </div>
-            {errors.sort_by && (
-                <p className="text-white">{errors.content.message} </p>
-            )}
-            <div class="form-group">
-                <label>Sort Order
-                <select value={select_values.sort_order} class="form-control" id="sort-order-dropdown" name="sort_order" ref={register}>
-                    <option value="desc">Descending</option>
-                    <option value="asc">Ascending</option>
-                </select>
-                </label>
+            <div className="form-row">
+                <div className="form-group col-md-4">
+                    <label>Year
+                    <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Year"
+                            defaultValue={""}
+                            name="year"
+                            ref={register}
+                        />
+                    </label>
+                </div>
+                <div className="form-group col-md-8">
+                    <label>Genre
+                           <select name="with_genres" class="form-control" ref={register}>
+                            {context.genres.map(genre => {
+                                return (
+                                    <>
+                                        <option key={genre.id} value={genre.id}>
+                                            {genre.name}
+                                        </option>
+                                    </>
+                                );
+                            })}
+                        </select>
+                    </label>
+                </div>
             </div>
-            {errors.sort_by && (
-                <p className="text-white">{errors.content.message} </p>
-            )}
-            <div className="form-group">
-                <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Year"
-                    defaultValue={""}
-                    name="year"
-                    ref={register}
-                />
-            </div>
-            <button type="submit" className="btn btn-primary">
-                Submit
+            <div class="form-row">
+
+                <div class="form-group col-md-3">
+                <button type="submit" className="btn btn-primary">
+                    Submit
       </button>
-            <button
-                type="reset"
-                className="btn btn-primary reset"
-                onClick={() => {
-                    reset({
-                        author: "",
-                        content: ""
-                    });
-                }}
-            >
-                Reset
+      </div>
+                <div class="form-group col-md-3">
+                <button
+                    type="reset"
+                    className="btn btn-primary reset"
+                    onClick={() => {
+                        reset({
+                            author: "",
+                            content: ""
+                        });
+                    }}
+                >
+                    Reset
       </button>
+      </div>
+            </div>
         </form>
     );
 };

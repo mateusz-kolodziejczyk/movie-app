@@ -1,5 +1,6 @@
 import React from "react";
-import { storiesOf } from "@storybook/react";
+import useContext from "react-hook-form";
+import { addDecorator, storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
 import FilterControls from "../src/components/filterControls";
@@ -184,15 +185,15 @@ storiesOf("Person Details Page/PersonDetails", module).add("default", () => (
   <PersonDetails person={sample_actor} />
 ));
 storiesOf("Movie Cast Page/MovieCast", module)
-.addDecorator(story => (
-  <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
-))
-.add("default", () => {
-  const cast = [sample_actor, sample_actor, sample_actor, sample_actor];
-  return (
-    <MovieCast cast={cast} />
-  )
-});
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    const cast = [sample_actor, sample_actor, sample_actor, sample_actor];
+    return (
+      <MovieCast cast={cast} />
+    )
+  });
 
 storiesOf("Movie Details Page/MovieHeader", module)
   .addDecorator(story => (
@@ -200,16 +201,18 @@ storiesOf("Movie Details Page/MovieHeader", module)
   ))
   .add("default", () => <MovieHeader movie={sample} />);
 
-  storiesOf("Person Details Page/PersonHeader", module)
+storiesOf("Person Details Page/PersonHeader", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <PersonHeader person={sample_actor} />);
 
-  storiesOf("Home Page/DiscoverSearchForm" , module)
-    .addDecorator(story => (
-      <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
-    ))
-    .add("default", () => <DiscoverSearchForm/>);
+storiesOf("Home Page/DiscoverSearchForm", module)
+  .addDecorator(story => (
+    <GenresContextProvider>{story()}</GenresContextProvider>
+  ))
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => <DiscoverSearchForm />);
 
-  
