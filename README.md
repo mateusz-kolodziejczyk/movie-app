@@ -58,7 +58,7 @@ Create your own .env file with your own TMDB API key in the root folder.
 + /movies/top-rated(public) - displays a list of the top rated movies on tmdb
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
-+ /search-form?query - displays a search form on the main page.
++ /search-form?query(public) - displays a search form on the main page.
 
 
 ### Data hyperlinking.
@@ -75,6 +75,9 @@ Create your own .env file with your own TMDB API key in the root folder.
 ![][DMFResetMovieList]
 > Clicking on 'Reset Movie List' will send the user back to '/search-form' and reset their movie list.
 
+![][fullCastLink]
+> Clickin on 'Full Cast' will display a list of all the cast members on a separate page.
+
 
 ---------------------------------
 
@@ -90,4 +93,5 @@ Create your own .env file with your own TMDB API key in the root folder.
 [personDetailsMovieLink]: ./public/personDetailMovieLink.PNG
 [DMFResetMovieList]: ./public/discoverMovieFormResetMovieList.PNG
 [DMFSubmit]: ./public/discoverMovieFormSubmit.PNG
+[fullCastLink]: ./public/fullCastList.PNG
 
