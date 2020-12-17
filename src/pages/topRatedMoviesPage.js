@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import PageTemplate from '../components/templateMovieListPage'
-import AddToWatchlistButton from "../components/buttons/addToWatchlist"
 import {MoviesContext} from '../contexts/moviesContext'
 import AddToFavoriteButton from "../components/buttons/addToFavorites";
 

@@ -8,7 +8,6 @@ const MovieCastPage = (props) => {
   const movie_id = props.match.params.id;
   const [movie] = useMovie(movie_id);
   const [cast] = useCast(movie_id);
-  console.log("MovieID: " + "'" + movie_id + "'");
   return (
     <>
       {movie && cast ?

@@ -1,5 +1,5 @@
 import { Link, Route, withRouter } from "react-router-dom"
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PageTemplate from "../components/templatePersonPage";
 import PersonDetails from "../components/personDetails";
 import usePerson from "../hooks/usePerson";

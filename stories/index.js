@@ -1,5 +1,4 @@
 import React from "react";
-import useContext from "react-hook-form";
 import { addDecorator, storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
@@ -11,7 +10,6 @@ import MovieHeader from "../src/components/headerMovie";
 import MovieCast from "../src/components/movieCast";
 import PersonDetails from "../src/components/personDetails";
 import DiscoverSearchForm from "../src/components/discoverSearchForm";
-import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";

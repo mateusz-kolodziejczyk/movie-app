@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieReviewPage from "./pages/movieReviewPage";
 import HomePage from "./pages/homePage";
@@ -34,7 +34,6 @@ const App = () => {
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />
                 <Route path="/person/:id" component={PersonPage} />
-                <Route path ="/search" component={HomePage}/>
                 <Route path="/" component={HomePage} />
                 <Redirect from="*" to="/" />
               </Switch>

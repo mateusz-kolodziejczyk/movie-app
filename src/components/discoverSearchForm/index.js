@@ -25,7 +25,7 @@ const DiscoverSearchForm = ({ history }) => {
             + (data.vote_count !== "" ? "&vote_count.gte=" + data.vote_count : "")
         console.log(data);
         console.log(queryString);
-        history.push("/search" + queryString);
+        history.push("/" + queryString);
     };
 
     return (

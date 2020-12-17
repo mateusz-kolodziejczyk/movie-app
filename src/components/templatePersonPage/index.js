@@ -1,8 +1,6 @@
 import React from "react";
 import "./personPage.css";
 import PersonHeader from "../personHeader";
-import PersonImages from "../personImages";
-import PersonMovieCredits from "../personMovieCredits";
 
 const TemplatePersonPage = ({ person, images,credits, children }) => {
   

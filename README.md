@@ -22,7 +22,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + https://api.themoviedb.org/3/movie/${id}/credits - get a list of credits(cast members) for a specific movie
 + https://api.themoviedb.org/3/person/${id} - get details on a specific person
 + https://api.themoviedb.org/3/person/${id}/images - get all the images of the person
-+ 
++ https://api.themoviedb.org/3/person/${id}/movie_credits - gets a list of all the credits a person has, as cast or crew. 
 
 ## App Design.
 
@@ -49,7 +49,10 @@ Create your own .env file with your own TMDB API key in the root folder..
 > Shows the top rated movies on the entire database, with a minimum amount of user scores. Clicking on the add to favorites button allows the user to add the movie to the favorites view.
 
 ![][watchlist]
->
+> Shows all the movies added to the watchlist
+
+![][homePage]
+> Updated. The table can be hidden by clickin on the Hide Discover Movies Form button. The various options allow the user to search for movies that fit their criteria. The Submit button will submit the form and send an api request changing the movie list. Reset will reset the form. Reset Movie List will reset the displayed list of movies.
 
 ## Routing.
 
@@ -60,7 +63,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + /movies/top-rated(public) - displays a list of the top rated movies on tmdb
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
-+ /search?query - shows a list of movies fitting the criteria in the query string.
++ /search-form?query - displays a search form on the main page.
 
 ### Data hyperlinking.
 
@@ -83,9 +86,9 @@ Create your own .env file with your own TMDB API key in the root folder..
 [model]: ./data.jpg
 [movieDetail]: ./public/movieDetail.png
 [review]: ./public/review.png
-[reviewLink]: ./public/reviewLink.png
-[cardLink]: ./public/cardLink.png
 [stories]: ./public/storybook.png
 [personDetail]: ./public/personDetail.png
 [movieCast]: ./public/movieCast.png
 [topRated]: ./public/topRated.png
+[homePage]: ./public/homePage.png
+[actorPRofileLink]: ./public/actorProfileLink.png

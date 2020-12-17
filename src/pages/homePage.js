@@ -38,20 +38,20 @@ const MovieListPage = (props) => {
   return (
     <>
       {movies ?
-      <>
-         <div className="row top-buffer bottom-buffer">
+        <>
+          <div className="row top-buffer bottom-buffer">
             <div className="col-12 ">
               {path !== "search-form" ? (
                 <Link
                   className="btn btn-primary btn-block active"
-                  to={`/search-form?${params.toString()}`}
+                  to={params.toString() === "" ? '/search-form' : `/search-form?${params.toString()}`}
                 >
                   Open Discover Movies Form
                 </Link>
               ) : (
                   <Link
                     className="btn btn-primary btn-block active"
-                    to={`/?${params.toString()}`}
+                    to={params.toString() === "" ? '/' : `/?${params.toString()}`}
                   >
                     Hide Discover Movies Form
                   </Link>
@@ -62,13 +62,13 @@ const MovieListPage = (props) => {
             path={`/search-form`}
             render={props => <DiscoverSearchForm {...props} />}
           />
-      <PageTemplate
-        title="No. Movies"
-        movies={movies}  /* Changed */
-        action={(movie) => {
-          return <AddToFavoritesButton movie={movie} />;
-        }}
-      /></> : (<></>)}
+          <PageTemplate
+            title="No. Movies"
+            movies={movies}  /* Changed */
+            action={(movie) => {
+              return <AddToFavoritesButton movie={movie} />;
+            }}
+          /></> : (<></>)}
 
     </>
   );
