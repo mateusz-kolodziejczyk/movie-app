@@ -64,6 +64,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
 + /search-form?query - displays a search form on the main page.
++
 
 ### Data hyperlinking.
 
