@@ -19,7 +19,7 @@ const DiscoverSearchForm = ({ history }) => {
     const onSubmit = data => {
         const sortString = data.sort_by + "." + data.sort_order;
         const queryString = "?sort_by=" + sortString + "&include_adult=" + data.include_adult
-            + (data.year !== "" ? "&year=" + data.year : "")
+            + (data.year !== "" ? "&primary_release_year=" + data.year : "")
             + (data.with_genres !== "0" ? "&with_genres=" + data.with_genres : "")
             + (data.vote_average !== "" ? "&vote_average.gte=" + data.vote_average : "")
             + (data.vote_count !== "" ? "&vote_count.gte=" + data.vote_count : "")
