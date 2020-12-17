@@ -16,6 +16,11 @@ import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
 import PersonHeader from "../src/components/personHeader";
+import PersonImages from "../src/components/personImages"
+import PersonMovieCredits from "../src/components/personMovieCredits";
+
+const sample_movie_credits = require('./data/sample_credits.json')
+
 
 const sample = {
   adult: false,
@@ -128,6 +133,108 @@ const sample_actor = {
   "profile_path": "/rRdru6REr9i3WIHv2mntpcgxnoY.jpg"
 }
 
+const sample_images = [
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/rRdru6REr9i3WIHv2mntpcgxnoY.jpg",
+    "height": 1272,
+    "iso_639_1": null,
+    "vote_average": 5.984,
+    "vote_count": 41,
+    "width": 848
+  },
+  {
+    "aspect_ratio": 0.6667857142857143,
+    "file_path": "/qVS4Y3emBIfxqvlTFjFZOFb4kkK.jpg",
+    "height": 2800,
+    "iso_639_1": null,
+    "vote_average": 5.282,
+    "vote_count": 14,
+    "width": 1867
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/d9HyjGMCt4wgJIOxAGlaYWhKsiN.jpg",
+    "height": 1800,
+    "iso_639_1": null,
+    "vote_average": 5.252,
+    "vote_count": 44,
+    "width": 1200
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/6T7uBAjaS9gCck4yPykF6TvudCq.jpg",
+    "height": 2100,
+    "iso_639_1": null,
+    "vote_average": 5.186,
+    "vote_count": 20,
+    "width": 1400
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/kaoY9Ddm9QPc4AXuZjJ0kY2Avmd.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 5.18,
+    "vote_count": 18,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/2pvRo9bkTOovd88XQC4BqlVGLIm.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 5.146,
+    "vote_count": 10,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/b09UgA9Qw687ACQEZbxlSH1EF4g.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 5.146,
+    "vote_count": 10,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/gvZa55c23VdK2Ohr0TyiOxonv0x.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 5.12,
+    "vote_count": 17,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/3xNcgBw9THriGZ0WualllGqioAf.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 5.09,
+    "vote_count": 11,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/2CaOkXP0Y7T8YItalMfBQRkWVX2.jpg",
+    "height": 3000,
+    "iso_639_1": null,
+    "vote_average": 4.968,
+    "vote_count": 11,
+    "width": 2000
+  },
+  {
+    "aspect_ratio": 0.6666666666666666,
+    "file_path": "/bOlYWhVuOiU6azC4Bw6zlXZ5QTC.jpg",
+    "height": 1500,
+    "iso_639_1": null,
+    "vote_average": 4.908,
+    "vote_count": 51,
+    "width": 1000
+  }
+];
+
 storiesOf("Home Page/MovieCard", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -206,6 +313,15 @@ storiesOf("Person Details Page/PersonHeader", module)
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => <PersonHeader person={sample_actor} />);
+
+storiesOf("Person Details Page/PersonImages", module)
+  .add("default", ()=> <PersonImages images={sample_images} />)
+
+  storiesOf("Person Details Page/PersonMovieCredits", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => <PersonMovieCredits credits={sample_movie_credits} />)
 
 storiesOf("Home Page/DiscoverSearchForm", module)
   .addDecorator(story => (

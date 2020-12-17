@@ -9,8 +9,8 @@ Name: Mateusz Kolodziejczyk
  + Watchlist Page - Adding movies to watchlist on the upcoming page adds them to this page.
  + Movie page Cast List - The movie has a list of its cast members on its page, allowing users to see who acted in the movie.
  + Full Cast List - The movie cast list is shorter, as casts can be extremely large. The full cast list is in a separate page.
- + etc
- + etc
+ + Discover Search - Added a search feature to the home page to query the API to send back movies fitting the given criteria
+ + 
 
 ## Setup requirements (If required).
 
@@ -21,7 +21,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + https://api.themoviedb.org/3/movie/top_rated - get a list of the top rated movies.
 + https://api.themoviedb.org/3/movie/${id}/credits - get a list of credits(cast members) for a specific movie
 + https://api.themoviedb.org/3/person/${id} - get details on a specific person
-+ 
++ https://api.themoviedb.org/3/person/${id}/images - get all the images of the person
 
 ## App Design.
 

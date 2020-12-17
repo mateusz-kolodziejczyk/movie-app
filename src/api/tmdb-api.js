@@ -46,6 +46,22 @@ export const getMovieReviews = id => {
     return apiRequestWithResults(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`);
 };
 
+export const getPersonImages = id => {
+    return fetch(
+        `https://api.themoviedb.org/3/person/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+    .then(res => res.json())
+    .then(json => json.profiles)
+}
+
+export const getPersonMovieCredits = id => {
+    return fetch(
+         `https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+    .then(res => res.json())
+    .then(json => json.cast)
+}
+
 // Function for any api request that sends out a json file with results, common in this app
 // It includes any query to get a list of movies
 const apiRequestWithResults = (apiRequest) => {

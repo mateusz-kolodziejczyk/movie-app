@@ -1,9 +1,11 @@
 import React from "react";
 import "./personPage.css";
 import PersonHeader from "../personHeader";
+import PersonImages from "../personImages";
+import PersonMovieCredits from "../personMovieCredits";
 
-const TemplatePersonPage = ({ person, children }) => {
-
+const TemplatePersonPage = ({ person, images,credits, children }) => {
+  
   return (
     <>
       <PersonHeader person={person} />
@@ -23,6 +25,8 @@ const TemplatePersonPage = ({ person, children }) => {
           {children}
         </div>
       </div>
+      <PersonImages images={images}/>
+      <PersonMovieCredits credits={credits}/>
     </>
   );
 };
