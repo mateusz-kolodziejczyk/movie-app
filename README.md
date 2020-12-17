@@ -64,7 +64,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
 + /search-form?query - displays a search form on the main page.
-+
+
 
 ### Data hyperlinking.
 
@@ -73,7 +73,8 @@ Create your own .env file with your own TMDB API key in the root folder..
 ![][cardLink]
 > Clicking a card causes the display of that movie's details.
 
-
+![][actorProfileLink]
+> Clicking 'Actor Profile' for an actor on the table will display the full profile of the actor.
 
 ![][reviewLink]
 >Clicking the 'Full Review' for a review extract will display the full text of the review
@@ -86,10 +87,9 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 [model]: ./data.jpg
 [movieDetail]: ./public/movieDetail.png
-[review]: ./public/review.png
 [stories]: ./public/storybook.png
-[personDetail]: ./public/personDetail.png
-[movieCast]: ./public/movieCast.png
-[topRated]: ./public/topRated.png
-[homePage]: ./public/homePage.png
-[actorPRofileLink]: ./public/actorProfileLink.png
+[personDetail]: ./public/personDetail.PNG
+[movieCast]: ./public/movieCast.PNG
+[topRated]: ./public/topRated.PNG
+[homePage]: ./public/homePage.PNG
+[actorProfileLink]: ./public/actorProfileLink.PNG
