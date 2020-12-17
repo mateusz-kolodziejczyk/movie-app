@@ -6,9 +6,7 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "add-favorite":
             return {
-                movies: state.movies.map((m) =>
-                    m.id === action.payload.movie.id ? { ...m, favorite: true } : m
-                ),
+                movies: [...state.movies],
                 upcoming: [...state.upcoming],
                 topRated: [...state.topRated],
                 favorites: [...state.favorites, action.payload.movie],
@@ -54,10 +52,16 @@ const reducer = (state, action) => {
 };
 
 const MoviesContextProvider = (props) => {
-    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], favorites: []});
+    const [state, dispatch] = useReducer(reducer, { movies: [], upcoming: [], topRated: [], favorites: [] });
     const addToFavorites = (movieId) => {
-        const index = state.movies.map((m) => m.id).indexOf(movieId);
-        dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
+        if (state.movies.find((m) => m.id === movieId)) {
+            const index = state.movies.map((m) => m.id).indexOf(movieId);
+            dispatch({ type: "add-favorite", payload: { movie: state.movies[index] } });
+        }
+        else if (state.topRated.find((m) => m.id === movieId)) {
+            const index = state.topRated.map((m) => m.id).indexOf(movieId);
+            dispatch({ type: "add-favorite", payload: { movie: state.topRated[index] } });
+        }
     };
 
     const addToWatchlist = (movieId) => {
@@ -76,15 +80,15 @@ const MoviesContextProvider = (props) => {
 
     // Use it to reload movies after changing them
     const loadMovies = () => {
-       getMovies().then((movies) => {
+        getMovies().then((movies) => {
             dispatch({ type: "load", payload: { movies } });
-       });
+        });
     }
 
     // Load movies using a query string
     const loadMoviesQueryString = (queryString) => {
         getMoviesQueryString("&" + queryString).then((movies) => {
-            dispatch({ type: "load", payload: {movies}})
+            dispatch({ type: "load", payload: { movies } })
         })
     }
 

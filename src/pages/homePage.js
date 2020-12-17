@@ -32,8 +32,12 @@ const MovieListPage = (props) => {
 
   // Change the state of movies every time its changed
   useEffect(() => {
-    setMovies(context.movies);
-  }, [context.movies])
+    setMovies(context.movies.filter((m) => {
+      return !context.favorites.find((f) => {
+        return m.id === f.id;
+      })
+    }));
+  }, [context.movies, context.favorites])
 
 
   return (
