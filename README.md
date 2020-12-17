@@ -3,18 +3,19 @@
 Name: Mateusz Kolodziejczyk
 
 ## Features.
-
-...... A bullet-point list of the ADDITIONAL user features you have implemented for the  Movies Fan app ......,
  
  + Watchlist Page - Adding movies to watchlist on the upcoming page adds them to this page.
  + Movie page Cast List - The movie has a list of its cast members on its page, allowing users to see who acted in the movie.
  + Full Cast List - The movie cast list is shorter, as casts can be extremely large. The full cast list is in a separate page.
- + Discover Search - Added a search feature to the home page to query the API to send back movies fitting the given criteria
- + 
+ + Discover Search - Added a search feature to the home page to query the API to send back movies fitting the given criteria.
+ + Person Page - A page with details about a person. Also includes additional images of the person, as well as any movies they starred in.
+ + The user is able to both remove a movie from their watchlist, or add it to it.
+ + Top Rated Movies Page - A page showing a list of the highest rated movies on TMDB.
+ + The user can add movies on both the homepage and top rated page to their favorites list.
 
 ## Setup requirements (If required).
 
-Create your own .env file with your own TMDB API key in the root folder.. 
+Create your own .env file with your own TMDB API key in the root folder. 
 
 ## API Data Model.
 
@@ -28,13 +29,9 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ### Component catalogue (If required).
 
-....... Insert a screenshot from the Storybook UI, hi-light stories relating to new/modified components you developed - see example screenshot below] .......
-
 ![][stories]
 
 ### UI Design.
-
-...... Insert screenshots of the new/modified views you have added to the Movies Fan app. Include a caption for each one clearly stating its purpose and any user interaction it supports ........
 
 ![][personDetail]
 > Shows detailed information on a person, mostly actors. Clicking on "Show Other Images" shows all the other profile pictures of the actor. Clicking on "Show Movies the Person Starred in" shows all the movies the person starred or co-starred in.
@@ -56,10 +53,8 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ## Routing.
 
-...... Insert a list of the additional routes supported by your Movies Fan app. If relevant, specify which of the routes require authentication, i.e. protected/private.
-
-+ /movie/:id/cast (public) - displays an abridged version of the cast list on a movie page
-+ /reviews/:id/full-cast (public) - displays the full cast of a movie on a separate page
++ /movies/:id/cast (public) - displays an abridged version of the cast list on a movie page
++ /movies/:id/full-cast (public) - displays the full cast of a movie on a separate page
 + /movies/top-rated(public) - displays a list of the top rated movies on tmdb
 + /person/:id(public) - displays information about a particular person
 + /movies/watchlist(public) - displays a list of all the movies added to the watchlist
@@ -68,20 +63,18 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ### Data hyperlinking.
 
-.... Use screenshots to illustrate where data hyperlinking is present in your views - include captions.
-
-![][cardLink]
-> Clicking a card causes the display of that movie's details.
-
 ![][actorProfileLink]
 > Clicking 'Actor Profile' for an actor on the table will display the full profile of the actor.
 
-![][reviewLink]
->Clicking the 'Full Review' for a review extract will display the full text of the review
+![][personDetailsMovieLink]
+> Clicking 'Movie Page' for a movie will display a page full of the movie's details.
 
-## Independent learning (If relevant).
+![][DMFSubmit]
+> Clicking on 'Submit' will send the user back to '/', however with a query string matching what the user entered.
 
-. . . . . Briefly mention each technologies/techniques used in your project codebase that were not covered in the lectures/labs. Provide source code filename references to support your assertions and include reference material links (articles/blogs).
+![][DMFResetMovieList]
+> Clicking on 'Reset Movie List' will send the user back to '/search-form' and reset their movie list.
+
 
 ---------------------------------
 
@@ -92,4 +85,9 @@ Create your own .env file with your own TMDB API key in the root folder..
 [movieCast]: ./public/movieCast.PNG
 [topRated]: ./public/topRated.PNG
 [homePage]: ./public/homePage.PNG
+[watchlist]: ./public/watchlist.PNG
 [actorProfileLink]: ./public/actorProfileLink.PNG
+[personDetailsMovieLink]: ./public/personDetailMovieLink.PNG
+[DMFResetMovieList]: ./public/discoverMovieFormResetMovieList.PNG
+[DMFSubmit]: ./public/discoverMovieFormSubmit.PNG
+
