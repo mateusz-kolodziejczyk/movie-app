@@ -6,6 +6,7 @@ import MovieDetails from "../components/movieDetails";
 import PageTemplate from "../components/templateMoviePage";
 import useMovie from "../hooks/useMovie";
 import useCast from "../hooks/useCast";
+import "./expandingButton.css";
 
 const MoviePage = props => {
   const { id } = props.match.params;
@@ -18,7 +19,7 @@ const MoviePage = props => {
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
           </PageTemplate>
-          <div className="row">
+          <div className="row top-buffer">
             <div className="col-12 ">
               {!props.history.location.pathname.endsWith("/reviews") ? (
                 <Link
@@ -41,7 +42,7 @@ const MoviePage = props => {
             path={`/movies/:id/reviews`}
             render={props => <MovieReviews movie={movie} {...props} />}
           />
-          <div className="row">
+          <div className="row top-buffer">
             <div className="col-12 ">
               {!props.history.location.pathname.endsWith("/cast") ? (
                 <Link

@@ -25,8 +25,6 @@ const TemplatePersonPage = ({ person, images,credits, children }) => {
           {children}
         </div>
       </div>
-      <PersonImages images={images}/>
-      <PersonMovieCredits credits={credits}/>
     </>
   );
 };

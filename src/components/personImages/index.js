@@ -5,8 +5,7 @@ import "./personImages.css";
 export default ({ images }) => {
   return (
     <>
-    <h3 align="center">Other Images</h3>
-      <ul className="list-group list-group-horizontal">
+      <ul className="list-group list-group-horizontal" id="imageList">
         {images.map(image => {
           return (
           <img
