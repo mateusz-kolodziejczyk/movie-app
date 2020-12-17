@@ -138,6 +138,19 @@ const DiscoverSearchForm = ({ history }) => {
                     >
                         Reset
       </button>
+      
+                </div>
+                <div class="form-group col-md-3">
+                    <button
+                        type="reset"
+                        className="btn btn-primary"
+                        onClick={() => {
+                            history.push("/search-form");
+                        }}
+                    >
+                        Reset Movie List
+      </button>
+      
                 </div>
             </div>
         </form>

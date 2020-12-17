@@ -60,6 +60,7 @@ const ReviewForm = ({ movie, history }) => {
       >
         Reset
       </button>
+
     </form>
   );
 };

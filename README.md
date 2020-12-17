@@ -22,6 +22,7 @@ Create your own .env file with your own TMDB API key in the root folder..
 + https://api.themoviedb.org/3/movie/${id}/credits - get a list of credits(cast members) for a specific movie
 + https://api.themoviedb.org/3/person/${id} - get details on a specific person
 + https://api.themoviedb.org/3/person/${id}/images - get all the images of the person
++ 
 
 ## App Design.
 
@@ -35,11 +36,20 @@ Create your own .env file with your own TMDB API key in the root folder..
 
 ...... Insert screenshots of the new/modified views you have added to the Movies Fan app. Include a caption for each one clearly stating its purpose and any user interaction it supports ........
 
-![][movieDetail]
->Shows detailed information on a movie. Clicking the 'Show Reviews' button will display extracts from critic reviews.
+![][personDetail]
+> Shows detailed information on a person, mostly actors. Clicking on "Show Other Images" shows all the other profile pictures of the actor. Clicking on "Show Movies the Person Starred in" shows all the movies the person starred or co-starred in.
 
-![][review]
->Shows the full text for a movie review. 
+![][movieDetail]
+> Updated movie detail screen, shows detailed information on the movie. Clicking on Show Reviews shows extracts of the reviews on the movie. The new button Show Cast brings up 10 cast member by order of relevance.
+
+![][movieCast]
+> Shows the entire cast of the movie by order of relevance. The lead and starring actors are listed at the top. Clicking on Actor profile sends the user to the person detail page.
+
+![][topRated]
+> Shows the top rated movies on the entire database, with a minimum amount of user scores. Clicking on the add to favorites button allows the user to add the movie to the favorites view.
+
+![][watchlist]
+>
 
 ## Routing.
 
@@ -59,6 +69,8 @@ Create your own .env file with your own TMDB API key in the root folder..
 ![][cardLink]
 > Clicking a card causes the display of that movie's details.
 
+
+
 ![][reviewLink]
 >Clicking the 'Full Review' for a review extract will display the full text of the review
 
@@ -74,3 +86,6 @@ Create your own .env file with your own TMDB API key in the root folder..
 [reviewLink]: ./public/reviewLink.png
 [cardLink]: ./public/cardLink.png
 [stories]: ./public/storybook.png
+[personDetail]: ./public/personDetail.png
+[movieCast]: ./public/movieCast.png
+[topRated]: ./public/topRated.png
