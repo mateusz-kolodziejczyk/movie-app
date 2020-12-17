@@ -34,6 +34,7 @@ const App = () => {
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />
                 <Route path="/person/:id" component={PersonPage} />
+                <Route path ="/search" component={HomePage}/>
                 <Route path="/" component={HomePage} />
                 <Redirect from="*" to="/" />
               </Switch>

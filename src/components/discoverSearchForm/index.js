@@ -23,7 +23,7 @@ const DiscoverSearchForm = ({ history }) => {
             + (data.with_genres !== "0" ? "&with_genres=" + data.with_genres : "");
         console.log(data);
         console.log(queryString);
-        history.push("/" + queryString);
+        history.push("/search" + queryString);
     };
 
     return (

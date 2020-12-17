@@ -1,6 +1,9 @@
 export const getMovies = () => {
     return apiRequestWithResults(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&page=1`);
 }
+export const getMoviesQueryString = (queryString) => {
+    return apiRequestWithResults(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US${queryString}`)
+}
 export const getUpcomingMovies = () => {
     return apiRequestWithResults(`https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`);
 };

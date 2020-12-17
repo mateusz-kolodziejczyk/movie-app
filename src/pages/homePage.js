@@ -1,32 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import PageTemplate from '../components/templateMovieListPage';
 import AddToFavoritesButton from '../components/buttons/addToFavorites';
 import DiscoverSearchForm from '../components/discoverSearchForm';
-import {MoviesContext} from '../contexts/moviesContext';
+import { MoviesContext } from '../contexts/moviesContext';
 
 
-const MovieListPage = () => {
+const MovieListPage = (props) => {
+  // Find out 
+  const params = new URLSearchParams(props.location.search);
+  const location = useLocation();
+  const path = location.pathname.substr(location.pathname.lastIndexOf('/') + 1);
+
   const context = useContext(MoviesContext);
-  /*const movies = context.movies.filter((m) => {  // New
-    return !("favorite" in m);
-  });*/
-  console.log(context.favorites);
-  const movies = context.movies.filter((m) => {
+  // Add to movies
+  const moviesToAdd = context.movies.filter((m) => {
     return !context.favorites.find((f) => {
-        return m.id === f.id;
+      return m.id === f.id;
     })
   })
+  const [movies, setMovies] = useState(null);
+  useEffect(() => {
+    if (path === "search") {
+      context.loadMoviesQueryString(params.toString());
+    }
+    else {
+      context.loadMovies();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  // Change the state of movies every time its changed
+  useEffect(() => {
+    setMovies(context.movies);
+  }, [context.movies])
+
 
   return (
     <>
-    <DiscoverSearchForm/>
-    <PageTemplate
-      title="No. Movies"
-      movies={movies}  /* Changed */
-      action={(movie) => {
-        return <AddToFavoritesButton movie={movie} />;
-      }}
-    />
+      <DiscoverSearchForm />
+      {movies ? <PageTemplate
+        title="No. Movies"
+        movies={movies}  /* Changed */
+        action={(movie) => {
+          return <AddToFavoritesButton movie={movie} />;
+        }}
+      /> : (<></>)}
+
     </>
   );
 };
